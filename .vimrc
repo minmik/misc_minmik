@@ -1,8 +1,8 @@
 " Indent options
 set autoindent " New lines inherit the indentation of previous lines.
-set tabstop=4 " Indent using two spaces.
+set tabstop=2 " Indent using two spaces.
 set expandtab " Convert tabs to spaces.
-set shiftwidth=4 " When shifting, indent using four spaces.
+set shiftwidth=2 " When shifting, indent using four spaces.
 set shiftround " When shifting lines, round the indentation to the nearest multiple of “shiftwidth.”
 set smarttab " Insert “tabstop” number of spaces when the “tab” key is pressed.
 
