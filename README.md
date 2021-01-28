@@ -1,7 +1,7 @@
 # misc_minmik
 Used for various purposes
 
-## Key remapping
+## Key remapping (Ubuntu 20.04)
 My laptop uses ALT_R for Hangul and CTRL_R for Hangul_Hanja. \
 So, we need to remap keybindings to properly use those keys: \
 link: [https://askubuntu.com/questions/296155/how-can-i-remap-keyboard-keys](https://askubuntu.com/questions/296155/how-can-i-remap-keyboard-keys)
