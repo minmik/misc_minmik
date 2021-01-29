@@ -29,17 +29,15 @@ set ruler " Always show cursor position.
 set wildmenu " Display command line’s tab complete options as a menu.
 set tabpagemax=50 " Maximum number of tab pages that can be opened from the command line.
 set number " Show line number
-set noerrorbells " Disable beep on errors.은
+set noerrorbells " Disable beep on errors.
 set title " Set the window’s title, reflecting the file currently being edited.
 " Only for unix users.
 set mouse=a " Enable mouse for scrolling and resizing.
-" vim-gtk is needed at this point
-vmap <C-c> "+y
-map <C-v> "+p
-imap <C-v> <esc><C-v>
 
 " Miscellaneous Options
 set autoread " Automatically re-read files if unmodified inside Vim.
+set history=500 " Increase undo history
+
 
 " Auto install plugins
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -55,7 +53,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'
 
 " Color themes
-Plug 'doums/darcula'
+"Plug 'doums/darcula'
+Plug 'morhetz/gruvbox'
 
 " Lightline settings
 Plug 'itchyny/lightline.vim'
@@ -66,12 +65,22 @@ Plug 'leafgarland/typescript-vim'
 " Doxygen automation
 Plug 'vim-scripts/DoxygenToolkit.vim'
 
+" YCM
+"Plug 'valloric/youcompleteme'
+
+" Tagbar - class explanation
+Plug 'preservim/tagbar'
+
+
 " Initialize plugin system
 call plug#end()
 
 " Color scheme settings
-colo darcula
-set termguicolors
+
+set t_Co=256
+colo gruvbox
+"set termguicolors
+set background=dark
 " TODO: Find a way to prevent syntax highlighting from being disabled over color-column.
 highlight ColorColumn guibg=#2d2d2d 
 let &colorcolumn="".join(range(100, 999),",")
@@ -86,4 +95,16 @@ let g:NERDTreeDirArrowCollapsible = ''
 
 " Lightline settings
 set noshowmode
-let g:lightline = { 'colorscheme': 'darculaOriginal' }
+let g:lightline = { 'colorscheme': 'jellybeans' }
+
+" Tagbar settings
+" Press F8 to toggle tagbar
+nmap <F8> :TagbarToggle<CR>
+" TODO : currently have some issue using mouse on Tagbar screen
+
+" save last cursor position
+au BufReadPost *
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \ exe "norm g`\"" |
+      \ endif
+
