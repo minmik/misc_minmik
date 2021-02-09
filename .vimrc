@@ -1,3 +1,8 @@
+" enable filetype detection
+filetype on
+filetype plugin on
+filetype indent on
+
 " Indent options
 set autoindent " New lines inherit the indentation of previous lines.
 set tabstop=2 " Indent using two spaces.
@@ -5,6 +10,11 @@ set expandtab " Convert tabs to spaces.
 set shiftwidth=2 " When shifting, indent using four spaces.
 set shiftround " When shifting lines, round the indentation to the nearest multiple of “shiftwidth.”
 set smarttab " Insert “tabstop” number of spaces when the “tab” key is pressed.
+
+" support tab for makefile
+au Filetype make set noexpandtab nosmarttab tabstop=8 shiftwidth=8
+" do not copy comment symbol to the next line
+au Filetype * set fo-=c fo-=r fo-=o
 
 " Search options
 set hlsearch " Highlight searched keyword
@@ -33,11 +43,12 @@ set noerrorbells " Disable beep on errors.
 set title " Set the window’s title, reflecting the file currently being edited.
 " Only for unix users.
 set mouse=a " Enable mouse for scrolling and resizing.
+set backspace=indent,eol,start
 
 " Miscellaneous Options
 set autoread " Automatically re-read files if unmodified inside Vim.
 set history=500 " Increase undo history
-
+set nowrap
 
 " Auto install plugins
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -59,14 +70,11 @@ Plug 'morhetz/gruvbox'
 " Lightline settings
 Plug 'itchyny/lightline.vim'
 
-" Language syntaxes
-Plug 'leafgarland/typescript-vim'
-
 " Doxygen automation
 Plug 'vim-scripts/DoxygenToolkit.vim'
 
 " YCM
-"Plug 'valloric/youcompleteme'
+Plug 'valloric/youcompleteme'
 
 " Tagbar - class explanation
 Plug 'preservim/tagbar'
@@ -107,4 +115,3 @@ au BufReadPost *
       \ if line("'\"") > 0 && line("'\"") <= line("$") |
       \ exe "norm g`\"" |
       \ endif
-
