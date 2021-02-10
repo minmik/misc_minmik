@@ -7,7 +7,7 @@ filetype indent on
 set autoindent " New lines inherit the indentation of previous lines.
 set tabstop=2 " Indent using two spaces.
 set expandtab " Convert tabs to spaces.
-set shiftwidth=2 " When shifting, indent using four spaces.
+set shiftwidth=2 " When shifting, indent using two spaces.
 set shiftround " When shifting lines, round the indentation to the nearest multiple of “shiftwidth.”
 set smarttab " Insert “tabstop” number of spaces when the “tab” key is pressed.
 
@@ -43,6 +43,7 @@ set tabpagemax=50 " Maximum number of tab pages that can be opened from the comm
 set number " Show line number
 set noerrorbells " Disable beep on errors.
 set title " Set the window’s title, reflecting the file currently being edited.
+
 " Only for unix users.
 set mouse=a " Enable mouse for scrolling and resizing.
 set backspace=indent,eol,start
@@ -51,6 +52,8 @@ set backspace=indent,eol,start
 set autoread " Automatically re-read files if unmodified inside Vim.
 set history=500 " Increase undo history
 set nowrap
+set encoding=utf-8 " The encoding displayed.
+set fileencoding=utf-8 " The encoding written to file.
 
 " Auto install plugins
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -80,7 +83,6 @@ Plug 'valloric/youcompleteme'
 
 " Tagbar - class explanation
 Plug 'preservim/tagbar'
-
 
 " Initialize plugin system
 call plug#end()
@@ -117,3 +119,4 @@ au BufReadPost *
       \ if line("'\"") > 0 && line("'\"") <= line("$") |
       \ exe "norm g`\"" |
       \ endif
+
