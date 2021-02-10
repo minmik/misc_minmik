@@ -15,6 +15,8 @@ set smarttab " Insert “tabstop” number of spaces when the “tab” key is p
 au Filetype make set noexpandtab nosmarttab tabstop=8 shiftwidth=8
 " do not copy comment symbol to the next line
 au Filetype * set fo-=c fo-=r fo-=o
+" git commit support
+au Filetype gitcommit setlocal textwidth=72 colorcolumn=+1
 
 " Search options
 set hlsearch " Highlight searched keyword
