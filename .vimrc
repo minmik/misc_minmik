@@ -78,8 +78,8 @@ Plug 'itchyny/lightline.vim'
 " Doxygen automation
 Plug 'vim-scripts/DoxygenToolkit.vim'
 
-" YCM
-Plug 'valloric/youcompleteme'
+" YCM (Optional)
+"Plug 'valloric/youcompleteme'
 
 " Tagbar - class explanation
 Plug 'preservim/tagbar'
