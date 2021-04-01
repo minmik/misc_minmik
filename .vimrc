@@ -12,11 +12,54 @@ set shiftround " When shifting lines, round the indentation to the nearest multi
 set smarttab " Insert “tabstop” number of spaces when the “tab” key is pressed.
 
 " support tab for makefile
-au Filetype make set noexpandtab nosmarttab tabstop=8 shiftwidth=8
+au Filetype make setlocal noexpandtab nosmarttab tabstop=8 shiftwidth=8
 " do not copy comment symbol to the next line
 au Filetype * set fo-=c fo-=r fo-=o
 " git commit support
 au Filetype gitcommit setlocal textwidth=72 colorcolumn=+1
+" set wrap for Markdown or tex
+au Filetype Markdown setlocal wrap 
+au Filetype tex setlocal wrap
+
+
+" ---------------------------------------------------------------------------
+" python indent option (used in ~/.vim/after/ftplugin/python.vim)
+"
+" setlocal indentexpr=GetGooglePythonIndent(v:lnum)
+"
+" let s:maxoff = 50 " maximum number of lines to look backwards.
+" function GetGooglePythonIndent(lnum)
+"   " Indent inside parens.
+"   " Align with the open paren unless it is at the end of the line.
+"   " E.g.
+"   " open_paren_not_at_EOL(100,
+"   "                       (200,
+"   "                        300),
+"   "                       400)
+"   " open_paren_at_EOL(
+"   "     100, 200, 300, 400)
+"   call cursor(a:lnum, 1)
+"   let [par_line, par_col] = searchpairpos('(\|{\|\[', '', ')\|}\|\]', 'bW',
+"         \ "line('.') < " . (a:lnum - s:maxoff) . " ? dummy :"
+"         \ . " synIDattr(synID(line('.'), col('.'), 1), 'name')"
+"         \ . " =~ '\\(Comment\\|String\\)$'")
+"   if par_line > 0
+"     call cursor(par_line, 1)
+"     if par_col != col("$") - 1
+"       return par_col
+"     else
+"       return indent(par_line) + &sw  " FIXED FROM ORIGINAL SCRIPT
+"     endif
+"   endif
+"
+"   " Delegate the rest to the original function.
+"   " return GetPythonIndent(a:lnum)
+"
+" endfunction
+"
+" let pyindent_nested_paren="&sw*2"
+" let pyindent_open_paren="&sw*2"
+" ---------------------------------------------------------------------------
 
 " Search options
 set hlsearch " Highlight searched keyword
@@ -79,7 +122,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 
 " YCM (Optional)
-"Plug 'valloric/youcompleteme'
+Plug 'valloric/youcompleteme'
 
 " Tagbar - class explanation
 Plug 'preservim/tagbar'
