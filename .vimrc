@@ -10,6 +10,8 @@ set expandtab " Convert tabs to spaces.
 set shiftwidth=2 " When shifting, indent using two spaces.
 set shiftround " When shifting lines, round the indentation to the nearest multiple of “shiftwidth.”
 set smarttab " Insert “tabstop” number of spaces when the “tab” key is pressed.
+set nowrap
+
 
 " support tab for makefile
 au Filetype make setlocal noexpandtab nosmarttab tabstop=8 shiftwidth=8
@@ -19,7 +21,7 @@ au Filetype * set fo-=c fo-=r fo-=o
 au Filetype gitcommit setlocal textwidth=72 colorcolumn=+1
 " set wrap for Markdown or tex
 au Filetype Markdown setlocal wrap 
-au Filetype tex setlocal wrap
+au Filetype *tex setlocal wrap
 
 
 " ---------------------------------------------------------------------------
@@ -94,7 +96,6 @@ set backspace=indent,eol,start
 " Miscellaneous Options
 set autoread " Automatically re-read files if unmodified inside Vim.
 set history=500 " Increase undo history
-set nowrap
 set encoding=utf-8 " The encoding displayed.
 set fileencoding=utf-8 " The encoding written to file.
 
